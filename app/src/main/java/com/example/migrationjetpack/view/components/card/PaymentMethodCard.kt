@@ -31,7 +31,9 @@ import com.example.migrationjetpack.ui.theme.White
 
 
 @Composable
-  fun PaymentMethodCard() {
+  fun PaymentMethodCard(
+    onAddPaymentClick: () -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -50,7 +52,6 @@ import com.example.migrationjetpack.ui.theme.White
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Medium,
                 color = TextDarkGray
-
             )
 
             Row(
@@ -65,7 +66,7 @@ import com.example.migrationjetpack.ui.theme.White
                     style = MaterialTheme.typography.bodyMedium
                 )
                 TextButton(
-                    onClick = { /* Cambiar método de pago */ },
+                    onClick = onAddPaymentClick,
                     colors = ButtonDefaults.textButtonColors(
                         contentColor = LinkBlue
                     )

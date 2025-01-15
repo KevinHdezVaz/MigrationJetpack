@@ -129,9 +129,9 @@ fun ProductItem(
                     style = MaterialTheme.typography.bodyMedium
                 )
                 Image(
-                    painter = painterResource(id = R.drawable.bafp_ic_elektra),
+                    painter = painterResource(id = R.drawable.bafp_ic_credit_logo),
                     contentDescription = null,
-                    modifier = Modifier.height(20.dp)
+                    modifier = Modifier.height(15.dp)
                 )
             }
             Spacer(Modifier.height(25.dp))

@@ -5,4 +5,7 @@ sealed class NavigationCompose(val route: String) {
     object ElektraRapido : NavigationCompose("elektra_rapido")
     object ElektraNormal : NavigationCompose("elektra_normal")
     object GiftCard : NavigationCompose("giftcard")
+    object Nipvie : NavigationCompose("nipview")
+    object LoginOtp : NavigationCompose("login_otp")
+
 }

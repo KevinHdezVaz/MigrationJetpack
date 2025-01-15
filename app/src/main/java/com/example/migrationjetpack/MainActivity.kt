@@ -29,6 +29,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.migrationjetpack.ui.theme.MigrationJetpackTheme
 import com.example.migrationjetpack.view.components.principalActivity.PaymentMethodItem
 import com.example.migrationjetpack.view.components.principalActivity.ToggleButtons
+import com.example.migrationjetpack.view.moduls.card.LoginOtp
+import com.example.migrationjetpack.view.moduls.card.NipView
 import com.example.migrationjetpack.view.moduls.card.PayCardItem
 import com.example.migrationjetpack.view.moduls.credit.CompraNormal
 import com.example.migrationjetpack.view.navigation.NavigationCompose
@@ -52,6 +54,10 @@ class MainActivity : ComponentActivity() {
                                     "elektra_rapido" -> navController.navigate(NavigationCompose.ElektraRapido.route)
                                     "elektra_normal" -> navController.navigate(NavigationCompose.ElektraNormal.route)
                                     "giftcard" -> navController.navigate(NavigationCompose.GiftCard.route)
+                                    "nipview" -> navController.navigate(NavigationCompose.Nipvie.route)
+                                    "login_otp" -> navController.navigate(NavigationCompose.LoginOtp.route)
+
+
                                     else ->navController.navigate(NavigationCompose.GiftCard.route)
                                 }
                             }
@@ -61,6 +67,9 @@ class MainActivity : ComponentActivity() {
                         PayCardItem(
                             onBackClick = {
                                 navController.navigateUp()
+                            },
+                            onNavigateToNip = {
+                                navController.navigate(NavigationCompose.Nipvie.route)
                             }
                         )
                     }
@@ -68,6 +77,9 @@ class MainActivity : ComponentActivity() {
                         CompraNormal(
                             onBackClick = {
                                 navController.navigateUp()
+                            },
+                            onNavigateToNip = {
+                                navController.navigate(NavigationCompose.Nipvie.route)
                             }
                         )
                     }
@@ -75,10 +87,30 @@ class MainActivity : ComponentActivity() {
                         PayCardItem(
                             onBackClick = {
                                 navController.navigateUp()
+                            },
+                            onNavigateToNip = {
+                                navController.navigate(NavigationCompose.Nipvie.route)
                             }
                         )
                     }
+                    composable(NavigationCompose.LoginOtp.route) {
+                        LoginOtp (
+                            onBackClick = {
+                                navController.navigateUp()
+                            }
+                        )
+                    }
+                    composable(NavigationCompose.Nipvie.route) {
+                        NipView(
+                            onBackClick = {
+                                navController.navigateUp()
+                            },
+                            onNavigateToLogin = {
+                                navController.navigate(NavigationCompose.LoginOtp.route)
+                            }
+                        )
 
+                    }
                 }
             }
             }
@@ -173,7 +205,6 @@ fun PaymentMethodsScreen(
                                     }
                                 }
 
-                                // Switch Dummy
                                 Row(
                                     modifier = Modifier
                                         .fillMaxWidth()
@@ -194,7 +225,6 @@ fun PaymentMethodsScreen(
                                     )
                                 }
 
-                                // Token Section
                                 Text(
                                     "Generacion de Token",
                                     style = MaterialTheme.typography.bodySmall,

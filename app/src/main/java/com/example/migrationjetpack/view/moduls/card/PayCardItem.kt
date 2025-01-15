@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import com.example.migrationjetpack.ui.theme.White
 import com.example.migrationjetpack.view.components.card.CuponBonoRegalo
@@ -25,13 +26,15 @@ import com.example.migrationjetpack.view.components.card.PaymentMethodCard
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PayCardItem(
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
+    onNavigateToNip: () -> Unit
 ) {
 
     Scaffold(
         containerColor = White,
         topBar = {
             TopAppBar(
+                modifier = Modifier.shadow(8.dp),
                 title = {
                     Text("Detalle del pedido")
                 },
@@ -48,13 +51,18 @@ fun PayCardItem(
         bottomBar = { FooterComponent() }
     ) { padding ->
         Box(modifier = Modifier.padding(padding)) {
-            OrderDetailContent()
+            OrderDetailContent(
+                onNavigateToNip
+             )
         }
     }
 }
 
 @Composable
-private fun OrderDetailContent() {
+private fun OrderDetailContent(
+    onNavigateToNip: () -> Unit
+
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -68,7 +76,9 @@ private fun OrderDetailContent() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        PaymentMethodCard()
+        PaymentMethodCard(
+            onAddPaymentClick = onNavigateToNip
+        )
 
         CuponBonoRegalo()
 
@@ -82,5 +92,7 @@ private fun OrderDetailContent() {
 @Preview
 @Composable
 fun DefaultPreview() {
-    PayCardItem(onBackClick = {})
+    PayCardItem(
+        onNavigateToNip = {},
+        onBackClick = {})
 }
