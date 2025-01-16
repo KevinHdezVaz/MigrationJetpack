@@ -16,9 +16,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        flatDir {
+            dirs("libs")
+        }
     }
 }
-
 rootProject.name = "MigrationJetpack"
 include(":app")
- 
+include(":front-pagos")

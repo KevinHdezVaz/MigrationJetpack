@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.navigation.compose)
+    implementation(project(":front-pagos"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -64,5 +65,12 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.5.0")
     implementation ("androidx.security:security-crypto:1.1.0-alpha01")
 
+    // Retrofit y otras dependencias
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.security.crypto)
+
+    // Para el archivo AAR, necesitas configurar el repositorio local
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
 
 }
