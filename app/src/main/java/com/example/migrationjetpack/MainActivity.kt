@@ -25,11 +25,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.front_pagos.view.moduls.card.PayCardItem
+import com.example.front_pagos.view.moduls.credit.AutenticationNipScreen
 import com.example.front_pagos.view.moduls.credit.LoginOtpScreen
 import com.example.migrationjetpack.ui.theme.MigrationJetpackTheme
 import com.example.migrationjetpack.view.components.principalActivity.ConfigurationSection
 import com.example.migrationjetpack.view.components.principalActivity.PaymentMethodItem
- import com.example.migrationjetpack.view.moduls.credit.CompraNormal
+import com.example.migrationjetpack.view.moduls.credit.BAFPCreditNipView
+import com.example.migrationjetpack.view.moduls.credit.CompraNormal
 import com.example.migrationjetpack.view.moduls.credit.LoginOtp
 import com.example.migrationjetpack.view.moduls.credit.PhoneNumber
 import com.example.migrationjetpack.view.navigation.NavigationCompose
@@ -94,6 +96,16 @@ class MainActivity : ComponentActivity() {
                     }
                     composable(NavigationCompose.LoginOtp.route) {
                         LoginOtp  (
+                            onBackClick = {
+                                navController.navigateUp()
+                            },
+                              onNavigateToNip = {
+                                navController.navigate(NavigationCompose.AutenticationNip.route)
+                            }
+                        )
+                    }
+                    composable(NavigationCompose.AutenticationNip.route) {
+                        BAFPCreditNipView  (
                             onBackClick = {
                                 navController.navigateUp()
                             }

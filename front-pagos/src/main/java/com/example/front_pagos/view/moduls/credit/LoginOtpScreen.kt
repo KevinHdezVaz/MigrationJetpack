@@ -33,10 +33,13 @@ import androidx.compose.ui.unit.sp
 import com.example.front_pagos.ui_theme.PrimaryRed
 import com.example.front_pagos.view.components.card.OtpView
 import com.example.front_pagos.view.components.card.ResendTimer
+import com.example.front_pagos.view.components.others.ButtonContinuar
 
 @Composable
 fun LoginOtpScreen(
     onBackClick: () -> Unit,
+    onNavigateToNip: () -> Unit,
+
     modifier: Modifier
 ) {
     val otpText = remember {
@@ -102,25 +105,11 @@ fun LoginOtpScreen(
 
             Spacer(Modifier.height(70.dp))
 
-            Button(
-                onClick = { /* handle verification */ },
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth()
-                    .height(48.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = PrimaryRed,
-                    disabledContainerColor = PrimaryRed.copy(alpha = 0.5f)
-                ),
-                enabled = otpText.value.length == 7,
-                shape = RoundedCornerShape(4.dp)
-            ) {
-                Text(
-                    text = "Verificar Código",
-                    color = Color.White,
-                    fontSize = 14.sp
-                )
-            }
+            ButtonContinuar(
+                "Verificar Codigo",
+                onClick = onNavigateToNip,
+                enabled = otpText.value.length == 7
+            )
 
         }
     }

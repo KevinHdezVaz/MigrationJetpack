@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -45,8 +46,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.front_pagos.R
 import com.example.front_pagos.ui_theme.PrimaryRed
+import com.example.front_pagos.view.components.others.ButtonContinuar
 
- @Composable
+@Composable
 fun PhoneNumberScreen(
     onBackClick: () -> Unit,
     onNavigateToLogin: () -> Unit,
@@ -56,7 +58,6 @@ fun PhoneNumberScreen(
 
     Scaffold(
         modifier = modifier,
-
         containerColor = Color.White,
 
     ) { padding ->
@@ -105,9 +106,7 @@ fun PhoneNumberScreen(
 
 
             Column(
-                modifier = Modifier
-                    .width(328.dp)
-                    .padding(top = 20.dp),
+                modifier = Modifier.padding(top = 20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
@@ -118,7 +117,7 @@ fun PhoneNumberScreen(
                     onValueChange = { newValue ->
                          if (newValue.length <= 10 && newValue.all { it.isDigit() }) {
                             phoneNumber = newValue
-                        }
+                         }
                     },
                     label = {
                         Text(
@@ -126,7 +125,8 @@ fun PhoneNumberScreen(
                             fontSize = 16.sp
                         )
                     },
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                         .padding(horizontal = 20.dp, vertical = 25.dp).fillMaxWidth(),
                     keyboardOptions = KeyboardOptions(
                         keyboardType = KeyboardType.Number,
                         imeAction = ImeAction.Done
@@ -140,26 +140,13 @@ fun PhoneNumberScreen(
                     )
                 )
 
-                Button(
-                    onClick = onNavigateToLogin,
-                    modifier = Modifier
-                        .width(328.dp)
-                        .height(82.dp)
-                        .padding(top = 28.dp),
 
-                    colors = ButtonDefaults.buttonColors(
-                            containerColor = PrimaryRed
-                    ),
-                    shape = RoundedCornerShape(4.dp),
-                   // enabled = phoneNumber.length == 10
+                ButtonContinuar(
+                    "Continuar",
+                    enabled = phoneNumber.length == 10,
+                    onClick = onNavigateToLogin
+                )
 
-                ) {
-                    Text(
-                        text = "Continuar",
-                        color = Color.White,
-                        fontSize = 14.sp
-                    )
-                }
             }
 
 

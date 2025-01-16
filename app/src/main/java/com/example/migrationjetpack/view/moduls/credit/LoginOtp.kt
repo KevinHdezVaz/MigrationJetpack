@@ -42,7 +42,8 @@ import com.example.migrationjetpack.ui.theme.PrimaryRed
 @Composable
 fun LoginOtp(
     onBackClick: () -> Unit,
-) {
+    onNavigateToNip: () -> Unit,
+    ) {
     val otpText = remember {
         mutableStateOf("")
     }
@@ -70,7 +71,8 @@ fun LoginOtp(
     ) { padding ->
         LoginOtpScreen (
             onBackClick = onBackClick,
-             modifier = Modifier.padding(
+            onNavigateToNip = onNavigateToNip,
+            modifier = Modifier.padding(
                 vertical = 60.dp
             )
         )
@@ -84,5 +86,7 @@ fun LoginOtp(
 fun LoginOtpScreenScreenPreview() {
     LoginOtpScreen (
         onBackClick = {},
-        modifier = Modifier)
+        onNavigateToNip = {},
+        modifier = Modifier
+    )
 }

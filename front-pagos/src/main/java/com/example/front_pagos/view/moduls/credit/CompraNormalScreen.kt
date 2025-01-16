@@ -23,29 +23,28 @@ import com.example.front_pagos.view.components.card.DeliveryAddressCard
 import com.example.front_pagos.view.components.card.PaymentMethodCard
 import com.example.front_pagos.view.components.card.ProductItem
 
-
 @Composable
 fun CompraNormalScreen(
     onBackClick: () -> Unit,
     onNavigateToNip: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Scaffold(
-        modifier = modifier,
-        containerColor = White
-    ) { paddingValues ->
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(White)
+    ) {
         OrderDetailContent(
             onNavigateToNip = onNavigateToNip,
-            modifier = Modifier.padding(paddingValues)
+            modifier = Modifier
         )
     }
 }
 
 @Composable
-  fun OrderDetailContent(
+fun OrderDetailContent(
     onNavigateToNip: () -> Unit,
     modifier: Modifier = Modifier
-
 ) {
     Column(
         modifier = modifier
@@ -53,15 +52,12 @@ fun CompraNormalScreen(
             .verticalScroll(rememberScrollState())
             .background(Color.White)
             .padding(16.dp)
-
     ) {
-
         DeliveryAddressCard()
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        PaymentMethodCard(   onAddPaymentClick = onNavigateToNip
-        )
+        PaymentMethodCard(onAddPaymentClick = onNavigateToNip)
 
         Text(
             text = "Productos",
@@ -76,7 +72,6 @@ fun CompraNormalScreen(
             normalPrice = "$ 899",
             discountPrice = "$ 799",
             weeklyPayment = "$ 140",
-
         )
 
         ProductItem(
@@ -94,14 +89,4 @@ fun CompraNormalScreen(
 
         OrderResumePay()
     }
-}
-
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    CompraNormalScreen(
-        onBackClick = {},
-        onNavigateToNip = {}
-    )
 }

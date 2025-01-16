@@ -7,5 +7,6 @@ sealed class NavigationCompose(val route: String) {
     object GiftCard : NavigationCompose("giftcard")
     object Nipvie : NavigationCompose("nipview")
     object LoginOtp : NavigationCompose("login_otp")
+    object AutenticationNip : NavigationCompose("autentication_nip")
 
 }
